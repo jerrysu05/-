@@ -4,16 +4,6 @@ const board = document.getElementById('board');
 const cells = Array.from(document.querySelectorAll('.cell'));
 const statusEl = document.getElementById('status');
 const resetBtn = document.getElementById('reset');
-const sfxPlace = document.getElementById('sfxPlace');
-const sfxWin = document.getElementById('sfxWin');
-const sfxDraw = document.getElementById('sfxDraw');
-
-function playSfx(audioEl) {
-    audioEl.currentTime = 0; // 讓連續觸發時可以重新播放，不會卡住
-    audioEl.play().catch(() => {
-        // 找不到音效檔時安靜失敗即可，不影響遊戲進行
-    });
-}
 
 const O_SVG = `<svg viewBox="0 0 100 100"><path d="M50 15 C72 15 85 32 84 52 C83 74 65 86 48 85 C28 84 15 68 16 48 C17 29 33 15 50 15 Z"/></svg>`;
 const X_SVG = `<svg viewBox="0 0 100 100"><path d="M18 16 L83 82"/><path d="M82 18 L17 83"/></svg>`;
@@ -59,7 +49,6 @@ function handleClick(e) {
 
     state[index] = current;
     render();
-    playSfx(sfxPlace);
 
     const winLine = checkWinner();
     if (winLine) {
@@ -67,14 +56,12 @@ function handleClick(e) {
         winLine.forEach(i => cells[i].classList.add('win'));
         statusEl.innerHTML = `<span class="turn-mark">${current}</span> 獲勝！`;
         cells.forEach(c => c.disabled = true);
-        playSfx(sfxWin);
         return;
     }
 
     if (state.every(v => v)) {
         gameOver = true;
         statusEl.textContent = '平手！';
-        playSfx(sfxDraw);
         return;
     }
 
