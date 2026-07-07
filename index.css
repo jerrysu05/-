@@ -113,8 +113,7 @@ body {
     margin-top: 6px;
 }
 
-.reset,
-.music-toggle {
+.reset {
     padding: 10px 22px;
     font-size: 14px;
     font-weight: 600;
@@ -127,11 +126,6 @@ body {
     transition: background 0.15s ease;
 }
 
-.reset:hover,
-.music-toggle:hover {
-    background: var(--accent);
-}
-
-.music-toggle.playing {
+.reset:hover {
     background: var(--accent);
 }

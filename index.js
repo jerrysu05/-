@@ -4,8 +4,6 @@ const board = document.getElementById('board');
 const cells = Array.from(document.querySelectorAll('.cell'));
 const statusEl = document.getElementById('status');
 const resetBtn = document.getElementById('reset');
-const bgm = document.getElementById('bgm');
-const musicToggle = document.getElementById('musicToggle');
 const sfxPlace = document.getElementById('sfxPlace');
 const sfxWin = document.getElementById('sfxWin');
 const sfxDraw = document.getElementById('sfxDraw');
@@ -92,24 +90,8 @@ function resetGame() {
     updateStatus();
 }
 
-function toggleMusic() {
-    if (bgm.paused) {
-        bgm.play().catch(() => {
-            // 找不到 bgm.mp3 或瀏覽器擋播放時會進到這裡
-            alert('播放不了音樂，請確認 bgm.mp3 檔案是否存在同一資料夾。');
-        });
-        musicToggle.textContent = '🔊 播放中';
-        musicToggle.classList.add('playing');
-    } else {
-        bgm.pause();
-        musicToggle.textContent = '🔇 播放音樂';
-        musicToggle.classList.remove('playing');
-    }
-}
-
 cells.forEach(cell => cell.addEventListener('click', handleClick));
 resetBtn.addEventListener('click', resetGame);
-musicToggle.addEventListener('click', toggleMusic);
 
 render();
 updateStatus();
