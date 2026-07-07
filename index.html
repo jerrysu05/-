@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九宮格</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="page">
+        <h1 class="title">九宮格</h1>
+        <p class="status" id="status">輪到 <span class="turn-mark">O</span></p>
+
+        <div class="board" id="board">
+            <button class="cell" data-index="0"></button>
+            <button class="cell" data-index="1"></button>
+            <button class="cell" data-index="2"></button>
+            <button class="cell" data-index="3"></button>
+            <button class="cell" data-index="4"></button>
+            <button class="cell" data-index="5"></button>
+            <button class="cell" data-index="6"></button>
+            <button class="cell" data-index="7"></button>
+            <button class="cell" data-index="8"></button>
+        </div>
+
+        <div class="controls">
+            <button class="reset" id="reset">重新開始</button>
+            <button class="music-toggle" id="musicToggle">🔇 播放音樂</button>
+        </div>
+    </div>
+
+    <!-- 把你的音樂檔命名為 bgm.mp3，放在跟 index.html 同一層資料夾 -->
+    <audio id="bgm" src="bgm.mp3" loop></audio>
+
+    <!-- 音效檔：下棋、獲勝、平手，檔名可自行調整，一樣放同一層資料夾 -->
+    <audio id="sfxPlace" src="place.mp3"></audio>
+    <audio id="sfxWin" src="win.mp3"></audio>
+    <audio id="sfxDraw" src="draw.mp3"></audio>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* ---------- 九宮格 (Tic-Tac-Toe) ---------- */
+
+@font-face {
+    font-family: 'system';
+    src: local('Segoe UI'), local('PingFang TC'), local('Microsoft JhengHei');
+}
+
+:root {
+    --paper: #ffffff;
+    --tile: #e9d9a4;
+    --tile-hover: #f0e2b6;
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --accent: #b03a2e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: var(--paper);
+    font-family: 'system', 'PingFang TC', 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 40px;
+}
+
+.title {
+    font-size: 28px;
+    letter-spacing: 4px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.status {
+    margin: 0;
+    font-size: 16px;
+    color: var(--ink-soft);
+}
+
+.status .turn-mark {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 88px);
+    grid-template-rows: repeat(3, 88px);
+    gap: 14px;
+}
+
+.cell {
+    position: relative;
+    background: var(--tile);
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell:hover:not(:disabled) {
+    background: var(--tile-hover);
+}
+
+.cell:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.cell:disabled {
+    cursor: default;
+}
+
+.cell svg {
+    width: 60%;
+    height: 60%;
+    overflow: visible;
+}
+
+.cell path, .cell circle {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.cell.win {
+    background: #d9c483;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.reset,
+.music-toggle {
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--paper);
+    background: var(--ink);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.reset:hover,
+.music-toggle:hover {
+    background: var(--accent);
+}
+
+.music-toggle.playing {
+    background: var(--accent);
+}
